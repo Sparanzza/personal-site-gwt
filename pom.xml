@@ -6,24 +6,47 @@
     <artifactId>website</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <dagger.version>2.27</dagger.version>
+        <junit.version>4.11</junit.version>
+        <gwt.version>2.8.2-rx1</gwt.version>
+        <dagger.version>2.21</dagger.version>
+        <junit.version>4.11</junit.version>
+        <reactivity.version>HEAD-SNAPSHOT</reactivity.version>
     </properties>
+
+    <inceptionYear>2020</inceptionYear>
+    <developers>
+        <developer>
+            <name>Aurelio Muñoz Hijano</name>
+            <email>aurelio@sparanzza.com</email>
+        </developer>
+    </developers>
+
     <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.google.gwt</groupId>
-                <artifactId>gwt</artifactId>
-                <version>2.8.2</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>3.1.0</version>
-            </dependency>
-        </dependencies>
+        <dependencies><!--@formatter:off-->
+            <!-- Annotation processor -->
+            <!-- Client -->
+            <dependency><groupId>com.google.gwt</groupId><artifactId>gwt</artifactId><version>${gwt.version}</version><type>pom</type><scope>import</scope></dependency>
+            <dependency><groupId>javax.inject</groupId><artifactId>javax.inject</artifactId><version>1</version></dependency>
+            <dependency><groupId>org.jboss.elemento</groupId><artifactId>elemento-core</artifactId><version>1.0.0-rc3</version></dependency>
+            <dependency><groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><version>3.1.0</version></dependency>
+            <dependency><groupId>com.intendia.gwt.rxgwt2</groupId><artifactId>rxgwt</artifactId><version>2.2</version></dependency>
+            <dependency><groupId>com.intendia.gwt</groupId><artifactId>rxjava2-gwt</artifactId><version>2.2.10-gwt1</version></dependency>
+            <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version></dependency>
+            <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version><classifier>source</classifier></dependency>
+            <!-- Server -->
+            <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>0.9</version></dependency>
+            <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>0.9</version><classifier>sources</classifier></dependency>
+            <!-- Test -->
+            <dependency><groupId>junit</groupId><artifactId>junit</artifactId><version>${junit.version}</version><scope>test</scope></dependency>
+        </dependencies><!--@formatter:on-->
     </dependencyManagement>
     <build>
         <finalName>sparanzza</finalName>
@@ -42,8 +65,6 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <!-- Do not upgrade past 3.1 to avoid triggering https://issues.apache.org/jira/browse/MSOURCES-95 -->
-                    <!-- Unless you use annotation processors, then upgrade to 3.5.1 at a minimum -->
                     <version>3.1</version>
                     <configuration>
                         <source>11</source>
@@ -61,7 +82,7 @@
                     <version>1.0-rc-10</version>
                     <extensions>true</extensions>
                     <configuration>
-                        <sourceLevel>1.8</sourceLevel>
+                        <sourceLevel>auto</sourceLevel>
                         <failOnError>true</failOnError>
                     </configuration>
                 </plugin>
@@ -91,4 +112,11 @@
         <module>website-shared</module>
         <module>website-server</module>
     </modules>
+    <repositories>
+
+        <repository>
+            <id>rxjava-gwt-repo</id>
+            <url>https://raw.githubusercontent.com/intendia-oss/rxjava-gwt/mvn-repo/</url>
+        </repository>
+    </repositories>
 </project>
