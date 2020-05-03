@@ -6,6 +6,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/annotations" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -76,11 +77,6 @@
     <orderEntry type="library" name="Maven: com.google.elemental2:elemental2-webstorage:1.0.0-RC1" level="project" />
     <orderEntry type="library" name="Maven: org.gwtproject.event:gwt-event:HEAD-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.gwtproject.safehtml:gwt-safehtml:1.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.google.dagger:dagger-gwt:2.21" level="project" />
-    <orderEntry type="library" name="Maven: com.google.dagger:dagger:2.21" level="project" />
-    <orderEntry type="library" name="Maven: com.google.dagger:dagger:sources:2.21" level="project" />
-    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
-    <orderEntry type="library" name="Maven: javax.inject:javax.inject:sources:1" level="project" />
     <orderEntry type="library" name="Maven: com.intendia.reactivity:reactivity-core:HEAD-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:27.1-jre" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
@@ -98,6 +94,10 @@
     <orderEntry type="library" name="Maven: com.intendia.gwt.rxgwt2:rxgwt:2.2" level="project" />
     <orderEntry type="library" name="Maven: com.intendia.qualifier:qualifier:0.22" level="project" />
     <orderEntry type="library" name="Maven: com.intendia.qualifier:qualifier:sources:0.22" level="project" />
+    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.dagger:dagger-gwt:2.21" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.dagger:dagger:sources:2.21" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.inject:javax.inject:sources:1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.dagger:dagger-compiler:2.21" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.dagger:dagger-producers:2.21" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.checkerframework:checker-compat-qual:2.5.3" level="project" />
@@ -108,5 +108,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.annotation:jsr250-api:1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" name="Maven: com.google.dagger:dagger:2.21" level="project" />
   </component>
 </module>
