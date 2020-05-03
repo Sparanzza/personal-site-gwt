@@ -18,11 +18,10 @@
         <dependency><groupId>${project.groupId}</groupId><artifactId>website-shared</artifactId><version>${project.version}</version><classifier>sources</classifier></dependency>
         <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-user</artifactId><version>${gwt.version}</version></dependency>
         <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-dev</artifactId><version>${gwt.version}</version></dependency>
+        <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-elemental</artifactId><version>2.8.2</version></dependency>
         <dependency><groupId>com.google.dagger</groupId><artifactId>dagger-gwt</artifactId><version>${dagger.version}</version></dependency>
         <dependency><groupId>org.jboss.elemento</groupId><artifactId>elemento-core</artifactId></dependency>
-        <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version></dependency>
-        <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><classifier>sources</classifier><version>${reactivity.version}</version></dependency>
-        <!-- Test dependencies -->
+        <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version></dependency>        <!-- Test dependencies -->
         <dependency><groupId>junit</groupId><artifactId>junit</artifactId><scope>test</scope></dependency>
     </dependencies><!--@formatter:on-->
 
@@ -47,7 +46,6 @@
                 <configuration>
                     <sourceLevel>11</sourceLevel>
                     <moduleName>com.sparanzza.AppEntryPoint</moduleName>
-                    <moduleShortName>sparanzzaweb</moduleShortName>
                 </configuration>
             </plugin>
         </plugins>
