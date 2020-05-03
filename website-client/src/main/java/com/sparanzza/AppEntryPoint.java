@@ -1,13 +1,20 @@
 package com.sparanzza;
 
+import static com.intendia.reactivity.client.PlaceNavigator.PlaceNavigation.noop;
+import static com.intendia.reactivity.client.PlaceRequest.of;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
-import com.intendia.reactivity.client.*;
+import com.intendia.reactivity.client.ParameterTokenFormatter;
+import com.intendia.reactivity.client.Place;
+import com.intendia.reactivity.client.PlaceManager;
 import com.intendia.reactivity.client.PlaceManager.DefaultHistorian;
 import com.intendia.reactivity.client.PlaceManager.Historian;
+import com.intendia.reactivity.client.PlaceNavigator;
+import com.intendia.reactivity.client.TokenFormatter;
 import com.sparanzza.application.AboutUsPresenter;
 import com.sparanzza.application.ContactPresenter;
 import com.sparanzza.application.EmptyPresenter;
@@ -20,17 +27,16 @@ import dagger.Module;
 import dagger.Subcomponent;
 import dagger.multibindings.IntoSet;
 import io.reactivex.Single;
-
 import javax.inject.Singleton;
 import java.util.function.Supplier;
 
-import static com.intendia.reactivity.client.PlaceNavigator.PlaceNavigation.noop;
-import static com.intendia.reactivity.client.PlaceRequest.of;
 
-;
+
 
 
 public class AppEntryPoint implements EntryPoint {
+
+
     @Override public void onModuleLoad() {
         Resources.inject();
         DaggerAppEntryPoint_ClientComponent.create().router().revealCurrentPlace();
@@ -54,9 +60,7 @@ public class AppEntryPoint implements EntryPoint {
         }
 
         // included in initial bundle
-        @Binds
-        @IntoSet
-        Place bindEmptyPlace(EmptyPresenter.MyPlace o);
+        @Binds @IntoSet Place bindEmptyPlace(EmptyPresenter.MyPlace o);
 
         // loaded using code splitting when any of this presenters gets visited
         @Binds @IntoSet Place bindHomePlace(HomePresenter.MyPlace o);
@@ -85,6 +89,7 @@ public class AppEntryPoint implements EntryPoint {
     public interface DefaultModule {
         @Provides @Singleton static EventBus provideEventBus() { return new SimpleEventBus(); }
         @Provides @Singleton static Historian provideHistorian() { return new DefaultHistorian(); }
-        @Binds @Singleton TokenFormatter provideTokenFormatter(ParameterTokenFormatter o);
+        @Binds @Singleton
+        TokenFormatter provideTokenFormatter(ParameterTokenFormatter o);
     }
 }
