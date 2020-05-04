@@ -95,7 +95,10 @@
               <configuration>
                 <webApp>
                   <resourceBases>
+                    <!--
                     <resourceBase>${basedir}/src/main/webapp</resourceBase>
+                    <resourceBase>${basedir}/../target/gwt/launcherDir/</resourceBase>
+                    -->
                     <resourceBase>${basedir}/../target/gwt/launcherDir/</resourceBase>
                   </resourceBases>
                 </webApp>
@@ -105,7 +108,11 @@
               <groupId>org.apache.tomcat.maven</groupId>
               <artifactId>tomcat7-maven-plugin</artifactId>
               <configuration>
+                <addWarDependenciesInClassloader>false</addWarDependenciesInClassloader>
+                <path>/</path>
+                <uriEncoding>UTF-8</uriEncoding>
                 <contextFile>${basedir}/src/main/tomcatconf/context.xml</contextFile>
+                <tomcatUsers>${basedir}/src/main/tomcatconf/tomcat-users.xml</tomcatUsers>
               </configuration>
             </plugin>
           </plugins>

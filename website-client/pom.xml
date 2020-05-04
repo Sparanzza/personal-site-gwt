@@ -13,27 +13,39 @@
     <packaging>gwt-app</packaging>
 
     <dependencies><!--@formatter:off-->
+        <dependency><groupId>com.google.code.findbugs</groupId><artifactId>jsr305</artifactId></dependency>
         <dependency><groupId>${project.groupId}</groupId><artifactId>website-shared</artifactId><version>${project.version}</version></dependency>
         <dependency><groupId>${project.groupId}</groupId><artifactId>website-shared</artifactId><version>${project.version}</version><classifier>sources</classifier></dependency>
         <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-user</artifactId><version>${gwt.version}</version></dependency>
         <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-dev</artifactId><version>${gwt.version}</version></dependency>
         <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-elemental</artifactId><version>2.8.2</version></dependency>
-        <dependency><groupId>org.jboss.elemento</groupId><artifactId>elemento-core</artifactId></dependency>
         <dependency><groupId>com.google.dagger</groupId><artifactId>dagger-gwt</artifactId><version>${dagger.version}</version></dependency>
-        <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version></dependency>
-        <!-- Annotation processor -->
-        <dependency><groupId>com.google.dagger</groupId><artifactId>dagger-compiler</artifactId><version>${dagger.version}</version><scope>provided</scope></dependency>
-        <!-- Test dependencies -->
+        <dependency><groupId>org.jboss.elemento</groupId><artifactId>elemento-core</artifactId></dependency>
+        <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version></dependency>        <!-- Test dependencies -->
         <dependency><groupId>junit</groupId><artifactId>junit</artifactId><scope>test</scope></dependency>
     </dependencies><!--@formatter:on-->
 
     <build>
         <plugins>
             <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <!-- Annotation processor -->
+                        <path>
+                            <groupId>com.google.dagger</groupId>
+                            <artifactId>dagger-compiler</artifactId>
+                            <version>${dagger.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
                 <configuration>
-                    <moduleName>com.sparanzza.App</moduleName>
+                    <sourceLevel>11</sourceLevel>
+                    <moduleName>com.sparanzza.AppEntryPoint</moduleName>
                     <moduleShortName>sparanzzaweb</moduleShortName>
                 </configuration>
             </plugin>

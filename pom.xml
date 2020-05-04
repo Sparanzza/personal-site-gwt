@@ -13,12 +13,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <dagger.version>2.27</dagger.version>
+        <dagger.version>2.23.1</dagger.version>
         <junit.version>4.11</junit.version>
-        <gwt.version>2.8.2-rx1</gwt.version>
-        <dagger.version>2.21</dagger.version>
+        <gwt.version>2.9.0-RC1</gwt.version>
         <junit.version>4.11</junit.version>
         <reactivity.version>HEAD-SNAPSHOT</reactivity.version>
+        <gwt.jvmArgs></gwt.jvmArgs>
     </properties>
 
     <inceptionYear>2020</inceptionYear>
@@ -31,10 +31,16 @@
 
     <dependencyManagement>
         <dependencies><!--@formatter:off-->
+            <!-- libs -->
+            <dependency><groupId>com.google.code.findbugs</groupId><artifactId>jsr305</artifactId><version>3.0.2</version></dependency>
             <!-- Annotation processor -->
+            <dependency><groupId>javax.inject</groupId><artifactId>javax.inject</artifactId><version>1</version></dependency>
+            <dependency><groupId>javax.annotation</groupId><artifactId>javax.annotation-api</artifactId><version>1.3.2</version></dependency>
+            <dependency><groupId>com.google.dagger</groupId><artifactId>dagger</artifactId><version>${dagger.version}</version></dependency>
+            <dependency><groupId>com.google.dagger</groupId><artifactId>dagger-compiler</artifactId><version>${dagger.version}</version></dependency>
+            <dependency><groupId>com.google.dagger</groupId><artifactId>dagger-gwt</artifactId><version>${dagger.version}</version></dependency>
             <!-- Client -->
             <dependency><groupId>com.google.gwt</groupId><artifactId>gwt</artifactId><version>${gwt.version}</version><type>pom</type><scope>import</scope></dependency>
-            <dependency><groupId>javax.inject</groupId><artifactId>javax.inject</artifactId><version>1</version></dependency>
             <dependency><groupId>org.jboss.elemento</groupId><artifactId>elemento-core</artifactId><version>1.0.0-rc3</version></dependency>
             <dependency><groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><version>3.1.0</version></dependency>
             <dependency><groupId>com.intendia.gwt.rxgwt2</groupId><artifactId>rxgwt</artifactId><version>2.2</version></dependency>
@@ -50,43 +56,20 @@
     </dependencyManagement>
     <build>
         <finalName>sparanzza</finalName>
-        <plugins>
-            <plugin>
-                <groupId>net.ltgt.gwt.maven</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <inherited>false</inherited>
-                <configuration>
-                    <launcherDir>${project.build.directory}/gwt/launcherDir</launcherDir>
-                    <moduleName/>
-                </configuration>
-            </plugin>
-        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
-                    <configuration>
-                        <source>11</source>
-                        <target>11</target>
-                    </configuration>
+                    <version>3.8.1</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.eclipse.jetty</groupId>
-                    <artifactId>jetty-maven-plugin</artifactId>
-                    <version>9.4.8.v20171121</version>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
-                    <groupId>net.ltgt.gwt.maven</groupId>
-                    <artifactId>gwt-maven-plugin</artifactId>
-                    <version>1.0-rc-10</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <sourceLevel>auto</sourceLevel>
-                        <failOnError>true</failOnError>
-                    </configuration>
-                </plugin>
-                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>3.0.1</version>
                     <executions>
@@ -100,13 +83,73 @@
                     </executions>
                 </plugin>
                 <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>9.4.8.v20171121</version>
+                </plugin>
+                <plugin>
+                    <groupId>net.ltgt.gwt.maven</groupId>
+                    <artifactId>gwt-maven-plugin</artifactId>
+                    <version>1.0-rc-10</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <moduleName>com.sparanzza.AppEntryPoint</moduleName>
+                        <moduleShortName>sparanzzaweb</moduleShortName>
+                        <sourceLevel>11</sourceLevel>
+                        <skipModule>true</skipModule>
+                        <extra>${project.build.directory}/gwt/extra</extra>
+                        <failOnError>true</failOnError>
+                        <localWorkers>2</localWorkers>
+                        <jvmArgs>
+                            <arg>${gwt.jvmArgs}</arg>
+                        </jvmArgs>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>gwt-maven-plugin</artifactId>
+                    <version>2.8.2</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.google.gwt</groupId>
+                            <artifactId>gwt-user</artifactId>
+                            <version>${gwt.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.google.gwt</groupId>
+                            <artifactId>gwt-dev</artifactId>
+                            <version>${gwt.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.6.0</version>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.2</version>
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>net.ltgt.gwt.maven</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <inherited>false</inherited>
+                <configuration>
+                    <launcherDir>${project.build.directory}/gwt/launcherDir/</launcherDir>
+                    <startupUrls>
+                        <url>/</url>
+                    </startupUrls>
+                    <moduleName/>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
+
     <modules>
         <module>website-client</module>
         <module>website-shared</module>
