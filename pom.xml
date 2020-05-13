@@ -2,10 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.sparanzza</groupId>
+    <groupId>com.sparanzza.website</groupId>
     <artifactId>website</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <inceptionYear>2020</inceptionYear>
+
+    <modules>
+        <module>website-client</module>
+        <module>website-shared</module>
+        <module>website-server</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -15,13 +22,13 @@
 
         <dagger.version>2.23.1</dagger.version>
         <junit.version>4.11</junit.version>
-        <gwt.version>2.9.0-RC1</gwt.version>
+        <gwt.version>2.9.0</gwt.version>
         <junit.version>4.11</junit.version>
-        <reactivity.version>HEAD-SNAPSHOT</reactivity.version>
-        <gwt.jvmArgs></gwt.jvmArgs>
+        <autorest.version>0.9</autorest.version>
+        <reactivity.version>0.2</reactivity.version>
+        <elemental2.version>1.0.0</elemental2.version>
     </properties>
 
-    <inceptionYear>2020</inceptionYear>
     <developers>
         <developer>
             <name>Aurelio Muñoz Hijano</name>
@@ -31,6 +38,10 @@
 
     <dependencyManagement>
         <dependencies><!--@formatter:off-->
+            <!-- modules -->
+            <dependency><groupId>com.sparanzza.website</groupId><artifactId>website-client</artifactId><version>${project.version}</version><type>war</type></dependency>
+            <dependency><groupId>com.sparanzza.website</groupId><artifactId>website-shared</artifactId><version>${project.version}</version></dependency>
+            <dependency><groupId>com.sparanzza.website</groupId><artifactId>website-server</artifactId><version>${project.version}</version></dependency>
             <!-- libs -->
             <dependency><groupId>com.google.code.findbugs</groupId><artifactId>jsr305</artifactId><version>3.0.2</version></dependency>
             <!-- Annotation processor -->
@@ -41,21 +52,27 @@
             <dependency><groupId>com.google.dagger</groupId><artifactId>dagger-gwt</artifactId><version>${dagger.version}</version></dependency>
             <!-- Client -->
             <dependency><groupId>com.google.gwt</groupId><artifactId>gwt</artifactId><version>${gwt.version}</version><type>pom</type><scope>import</scope></dependency>
-            <dependency><groupId>org.jboss.elemento</groupId><artifactId>elemento-core</artifactId><version>1.0.0-rc3</version></dependency>
+            <dependency><groupId>org.jboss.gwt.elemento</groupId><artifactId>elemento-core</artifactId><version>0.9.6-gwt2</version></dependency>
             <dependency><groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><version>3.1.0</version></dependency>
             <dependency><groupId>com.intendia.gwt.rxgwt2</groupId><artifactId>rxgwt</artifactId><version>2.2</version></dependency>
             <dependency><groupId>com.intendia.gwt</groupId><artifactId>rxjava2-gwt</artifactId><version>2.2.10-gwt1</version></dependency>
+            <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-dom</artifactId><version>${elemental2.version}</version></dependency>
+            <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-svg</artifactId><version>${elemental2.version}</version></dependency>
             <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version></dependency>
             <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version><classifier>source</classifier></dependency>
             <!-- Server -->
-            <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>0.9</version></dependency>
-            <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>0.9</version><classifier>sources</classifier></dependency>
+            <dependency><groupId>javax.ws.rs</groupId><artifactId>jsr311-api</artifactId><version>1.1</version></dependency>
+            <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>${autorest.version}</version></dependency>
+            <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>${autorest.version}</version><classifier>sources</classifier></dependency>
+            <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-gwt</artifactId><version>${autorest.version}</version></dependency>
+            <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-gwt</artifactId><version>${autorest.version}</version><classifier>sources</classifier></dependency>
+            <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-jre</artifactId><version>${autorest.version}</version></dependency>
             <!-- Test -->
             <dependency><groupId>junit</groupId><artifactId>junit</artifactId><version>${junit.version}</version><scope>test</scope></dependency>
         </dependencies><!--@formatter:on-->
     </dependencyManagement>
+
     <build>
-        <finalName>sparanzza</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -93,39 +110,14 @@
                     <version>1.0-rc-10</version>
                     <extensions>true</extensions>
                     <configuration>
-                        <moduleName>com.sparanzza.AppEntryPoint</moduleName>
+                        <moduleName>AppEntryPoint</moduleName>
                         <moduleShortName>sparanzzaweb</moduleShortName>
                         <sourceLevel>11</sourceLevel>
                         <skipModule>true</skipModule>
                         <extra>${project.build.directory}/gwt/extra</extra>
                         <failOnError>true</failOnError>
                         <localWorkers>2</localWorkers>
-                        <jvmArgs>
-                            <arg>${gwt.jvmArgs}</arg>
-                        </jvmArgs>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>gwt-maven-plugin</artifactId>
-                    <version>2.8.2</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.google.gwt</groupId>
-                            <artifactId>gwt-user</artifactId>
-                            <version>${gwt.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>com.google.gwt</groupId>
-                            <artifactId>gwt-dev</artifactId>
-                            <version>${gwt.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                    <version>1.6.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
@@ -134,6 +126,7 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
@@ -142,6 +135,7 @@
                 <configuration><!--@formatter:off-->
                     <launcherDir>${project.build.directory}/gwt/launcherDir</launcherDir>
                     <startupUrls><url>/</url></startupUrls>
+                    <compilerArgs><arg>-gen</arg><arg>${project.build.directory}/gwt/gen</arg></compilerArgs>
                     <codeserverArgs><arg>-bindAddress</arg><arg>0.0.0.0</arg><arg>-style</arg><arg>PRETTY</arg></codeserverArgs>
                     <devmodeArgs><arg>-bindAddress</arg><arg>0.0.0.0</arg><arg>-style</arg><arg>PRETTY</arg></devmodeArgs>
                     <moduleName/><!--@formatter:on-->
@@ -149,17 +143,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <modules>
-        <module>website-client</module>
-        <module>website-shared</module>
-        <module>website-server</module>
-    </modules>
-    <repositories>
-
-        <repository>
-            <id>rxjava-gwt-repo</id>
-            <url>https://raw.githubusercontent.com/intendia-oss/rxjava-gwt/mvn-repo/</url>
-        </repository>
-    </repositories>
 </project>

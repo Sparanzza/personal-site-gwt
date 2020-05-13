@@ -4,43 +4,37 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.sparanzza</groupId>
+    <groupId>com.sparanzza.website</groupId>
     <artifactId>website</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>website-server</artifactId>
+  <name>website :: Server API</name>
   <packaging>war</packaging>
 
   <dependencies>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>website-shared</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-servlet</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
+    <dependency><groupId>${project.groupId}</groupId><artifactId>website-shared</artifactId><version>${project.version}</version></dependency>
+    <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-servlet</artifactId></dependency>
+    <dependency><groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><scope>provided</scope></dependency>
+    <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>${autorest.version}</version></dependency>
+    <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-jre</artifactId><version>${autorest.version}</version></dependency>
   </dependencies>
 
   <build>
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.eclipse.jetty</groupId>
-          <artifactId>jetty-maven-plugin</artifactId>
+          <artifactId>maven-compiler-plugin</artifactId>
           <configuration>
-            <scanIntervalSeconds>1</scanIntervalSeconds>
-            <webApp>
-              <extraClasspath>${basedir}/../website-shared/target/classes/</extraClasspath>
-            </webApp>
-            <contextXml>${basedir}/src/main/jettyconf/context.xml</contextXml>
+            <annotationProcessorPaths>
+              <!-- Annotation processor -->
+              <dependecy>
+                <groupId>com.intendia.gwt.autorest</groupId>
+                <artifactId>autorest-processor</artifactId>
+                <version>${autorest.version}</version>
+              </dependecy>
+            </annotationProcessorPaths>
           </configuration>
         </plugin>
         <plugin>
@@ -95,10 +89,6 @@
               <configuration>
                 <webApp>
                   <resourceBases>
-                    <!--
-                    <resourceBase>${basedir}/src/main/webapp</resourceBase>
-                    <resourceBase>${basedir}/../target/gwt/launcherDir/</resourceBase>
-                    -->
                     <resourceBase>${basedir}/../target/gwt/launcherDir/</resourceBase>
                   </resourceBases>
                 </webApp>
