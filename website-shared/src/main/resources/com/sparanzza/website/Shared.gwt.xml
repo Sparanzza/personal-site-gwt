@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to="shared">
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="jsinterop.base.Base"/>
+    <inherits name="dagger.Dagger"/>
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="com.intendia.gwt.autorest.Autorest"/>
+    <inherits name="com.intendia.reactivity.Reactivity"/>
+
+    <source path=""/>
+</module>
