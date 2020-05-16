@@ -1,4 +1,4 @@
-package com.sparanzza.website;
+package com.sparanzza.website.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -12,7 +12,7 @@ import com.sparanzza.website.client.application.AboutUsPresenter;
 import com.sparanzza.website.client.application.ContactPresenter;
 import com.sparanzza.website.client.application.EmptyPresenter;
 import com.sparanzza.website.client.application.HomePresenter;
-import com.sparanzza.website.resources.Resources;
+import com.sparanzza.website.client.resources.Resources;
 import dagger.Component;
 import dagger.Module;
 import dagger.*;
@@ -24,17 +24,16 @@ import java.util.function.Supplier;
 
 import static com.intendia.reactivity.client.PlaceNavigator.PlaceNavigation.noop;
 import static com.intendia.reactivity.client.PlaceRequest.of;
+import static com.sparanzza.website.client.NameTokens.emptyPage;
+import static com.sparanzza.website.client.NameTokens.homePage;
 
 
-
-
-
-public class AppEntryPoint implements EntryPoint {
+public class ApplicationEntryPoint implements EntryPoint {
 
 
     @Override public void onModuleLoad() {
         Resources.inject();
-        DaggerAppEntryPoint_ClientComponent.create().router().revealCurrentPlace();
+        DaggerApplicationEntryPoint_ClientComponent.create().router().revealCurrentPlace();
     }
 
     @Component(modules = ClientModule.class) @Singleton interface ClientComponent {
@@ -47,9 +46,9 @@ public class AppEntryPoint implements EntryPoint {
         static @Provides
         PlaceNavigator providePlaceNavigator() {
             return new PlaceNavigator() {
-                @Override public PlaceNavigation defaultNavigation() { return noop(of(NameTokens.homePage).build()); }
+                @Override public PlaceNavigation defaultNavigation() { return noop(of(homePage).build()); }
                 @Override public PlaceNavigation errorNavigation(Throwable throwable) {
-                    return noop(of(NameTokens.emptyPage).build());
+                    return noop(of(emptyPage).build());
                 }
             };
         }

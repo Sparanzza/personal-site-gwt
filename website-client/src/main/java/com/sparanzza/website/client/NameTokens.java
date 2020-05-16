@@ -1,4 +1,4 @@
-package com.sparanzza.website;
+package com.sparanzza.website.client;
 
 public class NameTokens {
     public static final String emptyPage = "";

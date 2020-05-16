@@ -4,7 +4,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.intendia.reactivity.client.CompositeView;
 import com.intendia.reactivity.client.Place;
 import com.intendia.reactivity.client.PresenterChild;
-import com.sparanzza.website.NameTokens;
+import com.sparanzza.website.client.NameTokens;
 
 import javax.inject.Inject;
 import javax.inject.Provider;

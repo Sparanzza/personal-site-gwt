@@ -3,9 +3,9 @@
     <inherits name="com.google.gwt.user.User"/>
     <inherits name="jsinterop.base.Base"/>
     <inherits name="dagger.Dagger"/>
-    <inherits name="com.google.gwt.user.User"/>
-    <inherits name="com.intendia.gwt.autorest.Autorest"/>
+    <inherits name="io.reactivex.RxJava"/>
+    <inherits name="com.intendia.gwt.autorest.AutoRest"/>
     <inherits name="com.intendia.reactivity.Reactivity"/>
 
-    <source path=""/>
+    <source path="shared"/>
 </module>

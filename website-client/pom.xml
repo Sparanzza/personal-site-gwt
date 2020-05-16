@@ -14,21 +14,28 @@
     <packaging>gwt-app</packaging>
 
     <dependencies><!--@formatter:off-->
-        <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version></dependency>
-        <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version><classifier>sources</classifier></dependency>
+        <!-- Module dependencies -->
         <dependency><groupId>com.sparanzza.website</groupId><artifactId>website-shared</artifactId><version>${project.version}</version></dependency>
         <dependency><groupId>com.sparanzza.website</groupId><artifactId>website-shared</artifactId><version>${project.version}</version><classifier>sources</classifier></dependency>
+        <!-- General dependencies for standard applications -->
         <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-user</artifactId><version>${gwt.version}</version></dependency>
         <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-dev</artifactId><version>${gwt.version}</version></dependency>
-        <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-dom</artifactId></dependency>
-        <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-svg</artifactId></dependency>
-        <dependency><groupId>org.jboss.gwt.elemento</groupId><artifactId>elemento-core</artifactId></dependency>
+        <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version></dependency>
+        <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version><classifier>sources</classifier></dependency>
         <dependency><groupId>com.google.dagger</groupId><artifactId>dagger-gwt</artifactId><version>${dagger.version}</version></dependency>
+        <!-- libs -->
+        <dependency><groupId>com.google.jsinterop</groupId><artifactId>base</artifactId><version>1.0.0</version></dependency>
+        <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-core</artifactId><version>${elemental2.version}</version></dependency>
+        <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-dom</artifactId><version>${elemental2.version}</version></dependency>
+        <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-svg</artifactId><version>${elemental2.version}</version></dependency>
+        <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-webstorage</artifactId><version>${elemental2.version}</version></dependency>
+        <dependency><groupId>org.jboss.gwt.elemento</groupId><artifactId>elemento-core</artifactId></dependency>
         <dependency><groupId>com.intendia.gwt.rxgwt2</groupId><artifactId>rxgwt</artifactId></dependency>
         <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>${autorest.version}</version></dependency>
         <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>${autorest.version}</version><classifier>sources</classifier></dependency>
         <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-gwt</artifactId><version>${autorest.version}</version></dependency>
         <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-gwt</artifactId><version>${autorest.version}</version><classifier>sources</classifier></dependency>
+        <!-- test -->
         <dependency><groupId>junit</groupId><artifactId>junit</artifactId><scope>test</scope></dependency>
     </dependencies><!--@formatter:on-->
 
@@ -52,6 +59,7 @@
                 <artifactId>gwt-maven-plugin</artifactId>
                 <configuration>
                     <sourceLevel>11</sourceLevel>
+                    <skipModule>true</skipModule>
                     <moduleName>com.sparanzza.website.Client</moduleName>
                 </configuration>
             </plugin>
