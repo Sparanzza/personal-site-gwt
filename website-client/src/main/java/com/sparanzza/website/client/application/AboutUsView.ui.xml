@@ -2,7 +2,7 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
-    <ui:with field="res" type="com.sparanzza.website.resources.Resources"/>
+    <ui:with field="res" type="com.sparanzza.website.client.resources.Resources"/>
 
     <g:HTMLPanel styleName="{res.style.container}">
         <h2>About us</h2>

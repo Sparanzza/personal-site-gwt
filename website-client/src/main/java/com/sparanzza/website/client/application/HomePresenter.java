@@ -10,8 +10,8 @@ import com.intendia.gwt.autorest.client.RequestResourceBuilder;
 import com.intendia.gwt.autorest.client.ResourceVisitor;
 import com.intendia.reactivity.client.*;
 import com.intendia.rxgwt2.user.RxHandlers;
-import com.sparanzza.website.AppEntryPoint;
-import com.sparanzza.website.NameTokens;
+import com.sparanzza.website.client.ApplicationEntryPoint;
+import com.sparanzza.website.client.NameTokens;
 import com.sparanzza.website.shared.Nominatim;
 import com.sparanzza.website.shared.Nominatim_RestServiceModel;
 import io.reactivex.Observable;
@@ -28,8 +28,8 @@ import static com.intendia.rxgwt2.user.RxUser.bindValueChangeOr;
 public class HomePresenter extends PresenterChild<HomePresenter.MyView> {
 
     public static @Singleton class MyPlace extends Place {
-        @Inject MyPlace(Single<AppEntryPoint.ClientModule.Presenters> p) {
-            super(NameTokens.homePage, p.map(AppEntryPoint.ClientModule.Presenters::home));
+        @Inject MyPlace(Single<ApplicationEntryPoint.ClientModule.Presenters> p) {
+            super(NameTokens.homePage, p.map(ApplicationEntryPoint.ClientModule.Presenters::home));
         }
     }
 

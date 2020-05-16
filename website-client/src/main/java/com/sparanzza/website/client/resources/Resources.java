@@ -1,4 +1,4 @@
-package com.sparanzza.website.resources;
+package com.sparanzza.website.client.resources;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;

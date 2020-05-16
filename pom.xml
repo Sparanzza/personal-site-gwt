@@ -51,16 +51,21 @@
             <dependency><groupId>com.google.dagger</groupId><artifactId>dagger-compiler</artifactId><version>${dagger.version}</version></dependency>
             <dependency><groupId>com.google.dagger</groupId><artifactId>dagger-gwt</artifactId><version>${dagger.version}</version></dependency>
             <!-- Client -->
+            <dependency><groupId>com.google.jsinterop</groupId><artifactId>base</artifactId><version>1.0.0</version></dependency>
             <dependency><groupId>com.google.gwt</groupId><artifactId>gwt</artifactId><version>${gwt.version}</version><type>pom</type><scope>import</scope></dependency>
             <dependency><groupId>org.jboss.gwt.elemento</groupId><artifactId>elemento-core</artifactId><version>0.9.6-gwt2</version></dependency>
-            <dependency><groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><version>3.1.0</version></dependency>
             <dependency><groupId>com.intendia.gwt.rxgwt2</groupId><artifactId>rxgwt</artifactId><version>2.2</version></dependency>
-            <dependency><groupId>com.intendia.gwt</groupId><artifactId>rxjava2-gwt</artifactId><version>2.2.10-gwt1</version></dependency>
+            <dependency><groupId>com.intendia.gwt</groupId><artifactId>rxjava2-gwt</artifactId><version>2.2.2-gwt2</version></dependency>
+            <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-core</artifactId><version>${elemental2.version}</version></dependency>
             <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-dom</artifactId><version>${elemental2.version}</version></dependency>
             <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-svg</artifactId><version>${elemental2.version}</version></dependency>
+            <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-webstorage</artifactId><version>${elemental2.version}</version></dependency>
+            <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-promise</artifactId><version>${elemental2.version}</version></dependency>
             <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version></dependency>
             <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version><classifier>source</classifier></dependency>
             <!-- Server -->
+            <dependency><groupId>io.reactivex.rxjava2</groupId><artifactId>rxjava</artifactId><version>2.2.19</version></dependency>
+            <dependency><groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><version>3.1.0</version></dependency>
             <dependency><groupId>javax.ws.rs</groupId><artifactId>jsr311-api</artifactId><version>1.1</version></dependency>
             <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>${autorest.version}</version></dependency>
             <dependency><groupId>com.intendia.gwt.autorest</groupId><artifactId>autorest-core</artifactId><version>${autorest.version}</version><classifier>sources</classifier></dependency>
@@ -110,8 +115,6 @@
                     <version>1.0-rc-10</version>
                     <extensions>true</extensions>
                     <configuration>
-                        <moduleName>AppEntryPoint</moduleName>
-                        <moduleShortName>sparanzzaweb</moduleShortName>
                         <sourceLevel>11</sourceLevel>
                         <skipModule>true</skipModule>
                         <extra>${project.build.directory}/gwt/extra</extra>

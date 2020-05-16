@@ -3,7 +3,7 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:application="urn:import:com.sparanzza.application">
 
-    <ui:with field="res" type="com.sparanzza.website.resources.Resources"/>
+    <ui:with field="res" type="com.sparanzza.website.client.resources.Resources"/>
 
     <g:HTMLPanel>
         <div ui:field="loadingMessage" style="position:absolute; top:0; left:0; background-color:yellow;">

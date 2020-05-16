@@ -8,8 +8,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 import com.intendia.reactivity.client.*;
-import com.sparanzza.website.AppEntryPoint;
-import com.sparanzza.website.NameTokens;
+import com.sparanzza.website.client.ApplicationEntryPoint;
+import com.sparanzza.website.client.NameTokens;
 import io.reactivex.Single;
 import io.reactivex.subjects.BehaviorSubject;
 
@@ -21,8 +21,8 @@ public class ContactPresenter extends PresenterChild<ContactPresenter.MyView> {
 
     public static @Singleton class MyPlace extends Place {
         private BehaviorSubject<String> navigationHistory = BehaviorSubject.createDefault("");
-        @Inject MyPlace(Single<AppEntryPoint.ClientModule.Presenters> p, EventBus bus) {
-            super(NameTokens.contactPage, p.map(AppEntryPoint.ClientModule.Presenters::contact));
+        @Inject MyPlace(Single<ApplicationEntryPoint.ClientModule.Presenters> p, EventBus bus) {
+            super(NameTokens.contactPage, p.map(ApplicationEntryPoint.ClientModule.Presenters::contact));
             // In GWTP proxy events wake up the presenter, but this will break code splitting,
             // alternatively you can create a middle store or just inject the place in the presenter
             bus.addHandler(PlaceManager.NavigationEvent.TYPE, event -> {
