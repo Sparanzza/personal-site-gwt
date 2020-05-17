@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>website-client</artifactId>
-    <name>website :: Client web</name>
+    <name>website :: Client Web</name>
     <packaging>gwt-app</packaging>
 
     <dependencies><!--@formatter:off-->
