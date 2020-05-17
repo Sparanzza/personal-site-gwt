@@ -86,6 +86,7 @@ nav > ul > li > a:hover {
 }
 
 h2 {
+    color: white;
     font-size: 1.6rem;
     margin-bottom: 1rem;
 }

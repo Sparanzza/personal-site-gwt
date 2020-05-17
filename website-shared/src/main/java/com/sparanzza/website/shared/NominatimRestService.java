@@ -7,9 +7,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
-@AutoRestGwt
-@Path("search")
-public interface Nominatim {
+@AutoRestGwt @Path("search")
+public interface NominatimRestService {
     @GET Observable<SearchResult> search(@QueryParam("q") String query, @QueryParam("format") String format);
 
 }

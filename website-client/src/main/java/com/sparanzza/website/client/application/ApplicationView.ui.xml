@@ -1,7 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:application="urn:import:com.sparanzza.application">
+             xmlns:application="urn:import:com.sparanzza.website.client.application">
 
     <ui:with field="res" type="com.sparanzza.website.client.resources.Resources"/>
 
@@ -12,7 +12,7 @@
 
         <header>
             <div class="{res.style.container}">
-                <h1>Sparanzza.com | Under Construction | Reactivity template</h1>
+                <h2>Sparanzza.com | Under Construction | update version May 17th, 2020 </h2>
                 <ul>
                     <li>
                         <a href="https://github.com/intendia-oss/reactivity">[ Project Home ]</a>

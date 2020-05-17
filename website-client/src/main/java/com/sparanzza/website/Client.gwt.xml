@@ -4,11 +4,9 @@
 
     <inherits name="com.sparanzza.website.Shared"/>
     <inherits name="com.google.gwt.user.theme.clean.Clean"/>
-    <inherits name="com.intendia.reactivity.Reactivity"/>
     <inherits name='com.google.gwt.json.JSON'/>
-    <inherits name="org.jboss.gwt.elemento.Core"/>
-    <inherits name="com.intendia.rxgwt2.RxElemento"/>
     <inherits name="com.intendia.rxgwt2.RxUser"/>
+    <inherits name="com.intendia.reactivity.Reactivity"/>
     <inherits name="dagger.Dagger"/>
 
     <set-property name="compiler.useSourceMaps" value="true"/>

@@ -1,27 +1,23 @@
 package com.sparanzza.website.client.application;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.intendia.gwt.autorest.client.RequestResourceBuilder;
 import com.intendia.gwt.autorest.client.ResourceVisitor;
 import com.intendia.reactivity.client.*;
 import com.intendia.rxgwt2.user.RxHandlers;
 import com.sparanzza.website.client.ApplicationEntryPoint;
 import com.sparanzza.website.client.NameTokens;
-import com.sparanzza.website.shared.Nominatim;
-import com.sparanzza.website.shared.Nominatim_RestServiceModel;
-import io.reactivex.Observable;
+import com.sparanzza.website.shared.NominatimRestService;
+import com.sparanzza.website.shared.NominatimRestService_RestServiceModel;
 import io.reactivex.Single;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.inject.Singleton;
-
-import static com.intendia.rxgwt2.user.RxUser.bindValueChangeOr;
 
 
 @Singleton
@@ -33,27 +29,26 @@ public class HomePresenter extends PresenterChild<HomePresenter.MyView> {
         }
     }
 
-    public static class MyView extends CompositeView {
-        @UiTemplate("HomeView.ui.xml") interface Ui extends UiBinder<Widget, MyView> {
-            Ui binder = GWT.create(Ui.class);
-        }
-
-        @UiField IntegerBox a;
-        @UiField IntegerBox b;
-        @UiField InlineLabel c;
-        @UiField Button showPopup;
-
-        @Inject MyView() { initWidget(Ui.binder.createAndBindUi(this)); }
-    }
 
     @Inject HomePresenter(MyView view, ApplicationPresenter.MainContent parent, Provider<MyPopupPresenter> popup) {
         super(view, parent);
-        onReveal(Observable.combineLatest(bindValueChangeOr(view.a, 0), bindValueChangeOr(view.b, 0), Integer::sum)
-                .doOnNext(c -> view.c.setText(Integer.toString(c))));
-        // GWT valueBox send only events on blur, so bind keyUp and force change events to get better interactivity
-        onReveal(RxHandlers.keyUp(view.a).doOnNext(ev -> ValueChangeEvent.fire(view.a, view.a.getValue())));
-        onReveal(RxHandlers.keyUp(view.b).doOnNext(ev -> ValueChangeEvent.fire(view.b, view.b.getValue())));
-        onReveal(RxHandlers.click(view.showPopup).doOnNext(ev -> addToPopupSlot(popup.get())));
+
+        onReveal(RxHandlers.click(view.popup).doOnNext(ev -> addToPopupSlot(popup.get())));
+
+    }
+
+
+    public static class MyView extends CompositeView {
+
+        final FlowPanel container;
+        final Button popup;
+        @Inject MyView() {
+            popup = new Button("Rest Nominatim");
+            container = new FlowPanel(); container.add(popup);
+            container.getElement().setAttribute("style", "display: flex; justify-content: center; margin: 50px;");
+
+            initWidget(container);
+        }
     }
 
     static class MyPopupPresenter extends PresenterWidget<MyPopupPresenter.MyPopupView> {
@@ -69,19 +64,19 @@ public class HomePresenter extends PresenterChild<HomePresenter.MyView> {
             @Inject MyPopupView() {
                 DialogBox dialog = new DialogBox(); initWidget(dialog);
                 dialog.setModal(false);
-                dialog.getCaption().setText("Survival dialog!️");
+                dialog.getCaption().setText("Autorest Nominatim!️");
                 FlowPanel panel = new FlowPanel(); dialog.add(panel);
-                panel.add(new HTML("<p style='max-width: 400px;'>Hi! this dialog will keep open even if you navigate "
-                        + "to some other place. But, it will be hide until you go back to this place. If you want to "
-                        + "close it, use the close button.</p>"));
+                FlowPanel msg = new FlowPanel();
+                panel.add(msg);
                 panel.add(close = new Button("Close"));
 
-                Nominatim nominatim = new Nominatim_RestServiceModel(() -> osm());
+                NominatimRestService nominatim = new NominatimRestService_RestServiceModel(() -> osm());
                 nominatim.search("Málaga,España", "json").subscribe(n -> {
+                    msg.add(new HTML("[" + (n.importance * 10.) + "] " + n.display_name + " (" + n.lon + "," + n.lat + ")"));
                     GWT.log("[" + (n.importance * 10.) + "] " + n.display_name + " (" + n.lon + "," + n.lat + ")");
                 });
             }
-            static ResourceVisitor osm() { return new RequestResourceBuilder().path("http://nominatim.openstreetmap.org/"); }
+            static ResourceVisitor osm() { return new RequestResourceBuilder().path("https://nominatim.openstreetmap.org/"); }
         }
     }
 }
