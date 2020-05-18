@@ -24,6 +24,7 @@
         <dependency><groupId>com.intendia.reactivity</groupId><artifactId>reactivity-core</artifactId><version>${reactivity.version}</version><classifier>sources</classifier></dependency>
         <dependency><groupId>com.google.dagger</groupId><artifactId>dagger-gwt</artifactId><version>${dagger.version}</version></dependency>
         <!-- libs -->
+        <dependency><groupId>org.jboss.gwt.elemento</groupId><artifactId>elemento-core</artifactId></dependency>
         <dependency><groupId>javax.ws.rs</groupId><artifactId>jsr311-api</artifactId></dependency>
         <dependency><groupId>com.google.jsinterop</groupId><artifactId>base</artifactId><version>1.0.0</version></dependency>
         <dependency><groupId>com.google.elemental2</groupId><artifactId>elemental2-core</artifactId><version>${elemental2.version}</version></dependency>

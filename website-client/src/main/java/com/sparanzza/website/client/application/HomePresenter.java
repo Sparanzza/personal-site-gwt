@@ -13,11 +13,14 @@ import com.sparanzza.website.client.ApplicationEntryPoint;
 import com.sparanzza.website.client.NameTokens;
 import com.sparanzza.website.shared.NominatimRestService;
 import com.sparanzza.website.shared.NominatimRestService_RestServiceModel;
+import elemental2.dom.HTMLDivElement;
 import io.reactivex.Single;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.inject.Singleton;
+
+import static org.jboss.gwt.elemento.core.Elements.div;
 
 
 @Singleton
@@ -43,8 +46,11 @@ public class HomePresenter extends PresenterChild<HomePresenter.MyView> {
         final FlowPanel container;
         final Button popup;
         @Inject MyView() {
+            HTMLDivElement p = div().add("Hello from Elemento!").get();
             popup = new Button("Rest Nominatim");
-            container = new FlowPanel(); container.add(popup);
+            container = new FlowPanel();
+
+            container.add(popup);
             container.getElement().setAttribute("style", "display: flex; justify-content: center; margin: 50px;");
 
             initWidget(container);
