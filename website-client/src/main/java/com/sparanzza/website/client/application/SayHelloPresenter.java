@@ -1,11 +1,7 @@
 package com.sparanzza.website.client.application;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.web.bindery.event.shared.EventBus;
 import com.intendia.reactivity.client.*;
 import com.sparanzza.website.client.ApplicationEntryPoint;
@@ -17,12 +13,15 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 
-public class ContactPresenter extends PresenterChild<ContactPresenter.MyView> {
+public class SayHelloPresenter extends PresenterChild<SayHelloPresenter.MyView> {
 
-    public static @Singleton class MyPlace extends Place {
+    public static @Singleton
+    class MyPlace extends Place {
         private BehaviorSubject<String> navigationHistory = BehaviorSubject.createDefault("");
-        @Inject MyPlace(Single<ApplicationEntryPoint.ClientModule.Presenters> p, EventBus bus) {
-            super(NameTokens.contactPage, p.map(ApplicationEntryPoint.ClientModule.Presenters::contact));
+
+        @Inject
+        MyPlace(Single<ApplicationEntryPoint.ClientModule.Presenters> p, EventBus bus) {
+            super(NameTokens.SAYHOELLOPAGE.getPath(), p.map(ApplicationEntryPoint.ClientModule.Presenters::sayHello));
             // In GWTP proxy events wake up the presenter, but this will break code splitting,
             // alternatively you can create a middle store or just inject the place in the presenter
             bus.addHandler(PlaceManager.NavigationEvent.TYPE, event -> {
@@ -37,21 +36,21 @@ public class ContactPresenter extends PresenterChild<ContactPresenter.MyView> {
     }
 
     public static class MyView extends CompositeView implements View {
-        @UiTemplate("ContactView.ui.xml") interface Ui extends UiBinder<Widget, MyView> {
-            Ui binder = GWT.create(Ui.class);
+
+        FlowPanel container;
+
+        @Inject
+        MyView() {
+            container = new FlowPanel();
+            container.getElement().setAttribute("style", "display: flex; justify-content: center; margin: 50px;");
+            container.add(new HTML("HELLO PRESENTER"));
+            initWidget(container);
         }
 
-        @UiField Label navigationHistory;
-
-        @Inject MyView() { initWidget(Ui.binder.createAndBindUi(this)); }
-
-        public void setNavigationHistory(String navigationHistory) {
-            this.navigationHistory.setText(navigationHistory);
-        }
     }
 
-    @Inject ContactPresenter(MyView view, ApplicationPresenter.MainContent at, MyPlace place) {
+    @Inject
+    SayHelloPresenter(MyView view, ApplicationPresenter.MainContent at) {
         super(view, at);
-        onReveal(place.navigationHistory.doOnNext(n -> getView().setNavigationHistory(n)));
     }
 }

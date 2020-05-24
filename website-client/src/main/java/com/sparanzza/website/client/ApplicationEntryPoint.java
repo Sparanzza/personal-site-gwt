@@ -8,10 +8,7 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.intendia.reactivity.client.*;
 import com.intendia.reactivity.client.PlaceManager.DefaultHistorian;
 import com.intendia.reactivity.client.PlaceManager.Historian;
-import com.sparanzza.website.client.application.AboutUsPresenter;
-import com.sparanzza.website.client.application.ContactPresenter;
-import com.sparanzza.website.client.application.EmptyPresenter;
-import com.sparanzza.website.client.application.HomePresenter;
+import com.sparanzza.website.client.application.*;
 import com.sparanzza.website.client.resources.Resources;
 import dagger.Component;
 import dagger.Module;
@@ -24,19 +21,21 @@ import java.util.function.Supplier;
 
 import static com.intendia.reactivity.client.PlaceNavigator.PlaceNavigation.noop;
 import static com.intendia.reactivity.client.PlaceRequest.of;
-import static com.sparanzza.website.client.NameTokens.emptyPage;
-import static com.sparanzza.website.client.NameTokens.homePage;
+
 
 
 public class ApplicationEntryPoint implements EntryPoint {
 
 
-    @Override public void onModuleLoad() {
+    @Override
+    public void onModuleLoad() {
         Resources.inject();
         DaggerApplicationEntryPoint_ClientComponent.create().router().revealCurrentPlace();
     }
 
-    @Component(modules = ClientModule.class) @Singleton interface ClientComponent {
+    @Component(modules = ClientModule.class)
+    @Singleton
+    interface ClientComponent {
         PlaceManager router();
     }
 
@@ -46,35 +45,55 @@ public class ApplicationEntryPoint implements EntryPoint {
         static @Provides
         PlaceNavigator providePlaceNavigator() {
             return new PlaceNavigator() {
-                @Override public PlaceNavigation defaultNavigation() { return noop(of(homePage).build()); }
-                @Override public PlaceNavigation errorNavigation(Throwable throwable) {
-                    return noop(of(emptyPage).build());
+                @Override
+                public PlaceNavigation defaultNavigation() {
+                    return noop(of(NameTokens.HOMEPAGE.getPath()).build());
+                }
+
+                @Override
+                public PlaceNavigation errorNavigation(Throwable throwable) {
+                    return noop(of(NameTokens.ERRORPAGE.getPath()).build());
                 }
             };
         }
 
-        // included in initial bundle
-        @Binds @IntoSet Place bindEmptyPlace(EmptyPresenter.MyPlace o);
 
-        // loaded using code splitting when any of this presenters gets visited
-        @Binds @IntoSet Place bindHomePlace(HomePresenter.MyPlace o);
-        @Binds @IntoSet Place bindAboutUsPlace(AboutUsPresenter.MyPlace o);
-        @Binds @IntoSet Place bindContactPlace(ContactPresenter.MyPlace o);
+        //
+        @Binds @IntoSet Place bindEmptyPlace(ErrorPresenter.MyPlace o); // included in initial bundle
+        @Binds @IntoSet Place bindHomePlace(HomePresenter.MyPlace o); // loaded using code splitting when any of this presenters gets visited
+        @Binds @IntoSet Place bindSayHelloPlace(SayHelloPresenter.MyPlace o);
+        @Binds @IntoSet Place bindCurriculumVitaePlace(CurriculumVitaePresenter.MyPlace o);
+        @Binds @IntoSet Place bindSkillsPlace(SkillsPresenter.MyPlace o);
+        @Binds @IntoSet Place bindLastStepsPlace(LastStepsPresenter.MyPlace o);
 
         // we group and hide presenters to encourage code-splitting
         @Subcomponent
         interface Presenters {
             HomePresenter home();
-            AboutUsPresenter aboutUs();
-            ContactPresenter contact();
-            @Subcomponent.Builder interface Builder extends Supplier<Presenters> {}
+            SayHelloPresenter sayHello();
+            SkillsPresenter skills();
+            ErrorPresenter error();
+            LastStepsPresenter lastSteps();
+            CurriculumVitaePresenter curriculumVitae();
+            @Subcomponent.Builder
+            interface Builder extends Supplier<Presenters> {
+            }
         }
 
         // and we use a async lazy Presenters component to access to all the presenter in the split
-        @Provides @Singleton static Single<Presenters> presenters(Presenters.Builder builder) {
+        @Provides
+        @Singleton
+        static Single<Presenters> presenters(Presenters.Builder builder) {
             return Single.create(s -> GWT.runAsync(new RunAsyncCallback() {
-                @Override public void onFailure(Throwable reason) { s.onError(reason); }
-                @Override public void onSuccess() { s.onSuccess(builder.get()); }
+                @Override
+                public void onFailure(Throwable reason) {
+                    s.onError(reason);
+                }
+
+                @Override
+                public void onSuccess() {
+                    s.onSuccess(builder.get());
+                }
             }));
         }
     }
@@ -83,7 +102,6 @@ public class ApplicationEntryPoint implements EntryPoint {
     public interface DefaultModule {
         @Provides @Singleton static EventBus provideEventBus() { return new SimpleEventBus(); }
         @Provides @Singleton static Historian provideHistorian() { return new DefaultHistorian(); }
-        @Binds @Singleton
-        TokenFormatter provideTokenFormatter(ParameterTokenFormatter o);
+        @Binds @Singleton TokenFormatter provideTokenFormatter(ParameterTokenFormatter o);
     }
 }

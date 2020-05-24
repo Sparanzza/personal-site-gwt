@@ -3,30 +3,28 @@ package com.sparanzza.website.client.resources;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.resources.client.CssResource.NotStrict;
 
 public interface Resources extends ClientBundle {
-    static void inject() {
-        Resources resources = GWT.create(Resources.class);
-        resources.normalize().ensureInjected();
-        resources.style().ensureInjected();
+
+    Resources INSTANCE = GWT.create(Resources.class);
+
+    static Resources res() {
+        return INSTANCE;
     }
 
-    interface Normalize extends CssResource {}
+    static void inject() {
+        INSTANCE.normalize().ensureInjected();
+        INSTANCE.style().ensureInjected();
+    }
+
+    interface Normalize extends CssResource {
+    }
 
     interface Style extends CssResource {
-        @ClassName("label_error")
-        String labelError();
-
-        String container();
-
-        String box();
-
-        String links();
+        String topnav();
     }
 
-    @Source("normalize.gss")
-    Normalize normalize();
-
-    @Source("style.gss")
-    Style style();
+    @Source("normalize.gss") @NotStrict Normalize normalize();
+    @Source("style.gss") @NotStrict Style style();
 }

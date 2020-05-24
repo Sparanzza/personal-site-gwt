@@ -1,14 +1,9 @@
 package com.sparanzza.website.client.application;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiTemplate;
+
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 import com.intendia.reactivity.client.CompositeView;
 import com.intendia.reactivity.client.PlaceManager.LockInteractionEvent;
@@ -17,6 +12,7 @@ import com.intendia.reactivity.client.RevealableComponent;
 import com.intendia.reactivity.client.RootPresenter.RootContentSlot;
 import com.intendia.reactivity.client.Slots.NestedSlot;
 import com.intendia.reactivity.client.View;
+import com.sparanzza.website.client.ui.TopMenu;
 import dagger.Lazy;
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -38,30 +34,41 @@ public class ApplicationPresenter extends PresenterChild<ApplicationPresenter.My
      * This is the top-level view of the application. Every time another presenter wants to reveal itself, {@link
      * MyView} will add its content of the target inside the {@code mainContentPanel}.
      */
-    public static @Singleton class MyView extends CompositeView implements View {
-        @UiTemplate("ApplicationView.ui.xml") interface Ui extends UiBinder<Widget, MyView> {
-            Ui binder = GWT.create(Ui.class);
-        }
+    public static @Singleton
+    class MyView extends CompositeView implements View {
 
-        @UiField SimplePanel mainContentPanel;
-        @UiField Element loadingMessage;
+        FlowPanel rootContent;
+        FlowPanel loadingMessage;
+        SimplePanel mainContentPanel;
+        TopMenu topMenu;
 
-        @Inject MyView(MainContent slot) {
-            initWidget(Ui.binder.createAndBindUi(this));
+        @Inject
+        MyView(MainContent slot) {
+            rootContent = new FlowPanel();
+            loadingMessage = new FlowPanel(); rootContent.add(loadingMessage);
+            topMenu = new TopMenu(); rootContent.add(topMenu);
+            mainContentPanel = new SimplePanel(); rootContent.add(mainContentPanel);
+            initWidget(rootContent);
             bindSlot(slot, (HasOneWidget) mainContentPanel);
         }
 
         public void showLoading(boolean visible) {
-            loadingMessage.getStyle().setVisibility(visible ? Style.Visibility.VISIBLE : Style.Visibility.HIDDEN);
+            loadingMessage.setVisible(visible);
         }
     }
 
-    public static @Singleton class MainContent extends NestedSlot<RevealableComponent> {
-        @Inject MainContent(Lazy<ApplicationPresenter> presenter) { super(Single.fromCallable(presenter::get)); }
+    public static @Singleton
+    class MainContent extends NestedSlot<RevealableComponent> {
+        @Inject
+        MainContent(Lazy<ApplicationPresenter> presenter) {
+            super(Single.fromCallable(presenter::get));
+        }
     }
 
-    @Inject ApplicationPresenter(MyView view, RootContentSlot root, EventBus bus) {
-        super(view, root); view.showLoading(false);
+    @Inject
+    ApplicationPresenter(MyView view, RootContentSlot root, EventBus bus) {
+        super(view, root);
+        view.showLoading(false);
         onReveal(onLockInteraction(bus).doOnNext(ev -> getView().showLoading(ev.shouldLock())));
     }
 

@@ -27,7 +27,7 @@
         <autorest.version>0.9</autorest.version>
         <reactivity.version>0.2</reactivity.version>
         <elemental2.version>1.0.0-RC1</elemental2.version>
-        <elemento.version>0.9.3-gwt2</elemento.version>
+        <elemento.version>0.9.6-gwt2</elemento.version>
     </properties>
 
     <developers>
@@ -55,6 +55,7 @@
             <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-user</artifactId><version>${gwt.version}</version></dependency>
             <dependency><groupId>com.google.gwt</groupId><artifactId>gwt-dev</artifactId><version>${gwt.version}</version></dependency>
             <dependency><groupId>org.jboss.gwt.elemento</groupId><artifactId>elemento-core</artifactId><version>${elemento.version}</version></dependency>
+            <dependency><groupId>org.jboss.gwt.elemento</groupId><artifactId>elemento-widget</artifactId><version>${elemento.version}</version></dependency>
             <dependency><groupId>com.google.jsinterop</groupId><artifactId>base</artifactId><version>1.0.0</version></dependency>
             <dependency><groupId>com.google.gwt</groupId><artifactId>gwt</artifactId><version>${gwt.version}</version><type>pom</type><scope>import</scope></dependency>
             <dependency><groupId>com.intendia.gwt.rxgwt2</groupId><artifactId>rxgwt</artifactId><version>2.2</version></dependency>

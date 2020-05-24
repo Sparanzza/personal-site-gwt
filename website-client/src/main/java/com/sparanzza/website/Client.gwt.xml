@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to="web">
-    <inherits name="com.google.gwt.user.User"/>
-
     <inherits name="com.sparanzza.website.Shared"/>
+
+    <inherits name="com.google.gwt.user.User"/>
     <inherits name="com.google.gwt.user.theme.clean.Clean"/>
     <inherits name='com.google.gwt.json.JSON'/>
     <inherits name="com.intendia.rxgwt2.RxUser"/>
@@ -13,7 +13,9 @@
     <set-property name="compiler.useSourceMaps" value="true"/>
     <set-property name="compiler.useSymbolMaps" value="true"/>
 
+    <set-configuration-property name="CssResource.conversionMode" value="strict"/>
     <set-configuration-property name="CssResource.enableGss" value="true"/>
+
 
     <public path="public"/>
     <source path="client"/>

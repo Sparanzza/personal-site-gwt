@@ -13,35 +13,31 @@ import io.reactivex.Single;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import static com.sparanzza.website.client.i18n.WebsiteConstants.I18N;
-
-
-@Singleton
-public class HomePresenter extends PresenterChild<HomePresenter.MyView> {
+public class SkillsPresenter extends PresenterChild<SkillsPresenter.MyView> {
 
     public static @Singleton class MyPlace extends Place {
         @Inject MyPlace(Single<ApplicationEntryPoint.ClientModule.Presenters> p) {
-            super(NameTokens.HOMEPAGE.getPath(), p.map(ApplicationEntryPoint.ClientModule.Presenters::home));
+            super(NameTokens.SKILLSPAGES.getPath(), p.map(ApplicationEntryPoint.ClientModule.Presenters::skills));
         }
     }
 
+    public static class MyView extends CompositeView implements View {
 
-    @Inject
-    HomePresenter(MyView view, ApplicationPresenter.MainContent parent) {
-        super(view, parent);
-    }
+        FlowPanel container;
 
-
-    public static class MyView extends CompositeView  implements View{
-
-        final FlowPanel container;
-        @Inject MyView() {
+        @Inject
+        MyView() {
 
             container = new FlowPanel();
-            container.getElement().setAttribute("style", "display: flex; justify-content: center; margin: 10px;");
-            container.add( new HTML(I18N.mainTextHome()));
+            container.getElement().setAttribute("style", "display: flex; justify-content: center; margin: 50px;");
+            container.add(new HTML("SKILLS PRESENTER"));
 
             initWidget(container);
         }
+    }
+
+    @Inject
+    SkillsPresenter(SkillsPresenter.MyView view, ApplicationPresenter.MainContent at) {
+        super(view, at);
     }
 }

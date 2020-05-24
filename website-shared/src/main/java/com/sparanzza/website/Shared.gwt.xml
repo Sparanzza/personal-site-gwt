@@ -7,5 +7,22 @@
     <inherits name="com.intendia.gwt.autorest.AutoRest"/>
     <inherits name="com.intendia.reactivity.Reactivity"/>
 
+    <!-- I18N -->
+
+    <inherits name="com.google.gwt.i18n.I18N"/>
+
+    <!-- Spanish from Spain -->
+    <extend-property name="locale" values="es_ES"/>
+    <!-- English language, independent of country -->
+    <extend-property name="locale" values="en"/>
+
+    <extend-property name="locale" values="en,es" /> <!-- 1. full list of supported locales -->
+    <set-property name="locale" value="en,es" />     <!-- 2. remove the 'default' locale permutation -->
+    <set-property-fallback name="locale" value="en" />        <!-- 3. set the fallback locale, in replacement for the default 'default' locale -->
+    <set-configuration-property name ="locale.queryparam" value="lang"/>
+    <set-configuration-property name ="locale.cookie" value="lang"/>
+    <set-configuration-property name ="locale.useragent" value="yes"/>
+
+
     <source path="shared"/>
 </module>
