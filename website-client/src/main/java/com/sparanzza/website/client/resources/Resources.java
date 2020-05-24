@@ -23,6 +23,8 @@ public interface Resources extends ClientBundle {
 
     interface Style extends CssResource {
         String topnav();
+        @ClassName("alertdialog") String alertDialog();
+        @ClassName("alertdialog-closebtn") String alertDialogCloseBtn();
     }
 
     @Source("normalize.gss") @NotStrict Normalize normalize();

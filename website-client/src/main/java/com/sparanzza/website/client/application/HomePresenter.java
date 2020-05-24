@@ -8,6 +8,7 @@ import com.intendia.reactivity.client.PresenterChild;
 import com.intendia.reactivity.client.View;
 import com.sparanzza.website.client.ApplicationEntryPoint;
 import com.sparanzza.website.client.NameTokens;
+import com.sparanzza.website.client.ui.AlertDialog;
 import io.reactivex.Single;
 
 import javax.inject.Inject;
@@ -25,12 +26,10 @@ public class HomePresenter extends PresenterChild<HomePresenter.MyView> {
         }
     }
 
-
     @Inject
     HomePresenter(MyView view, ApplicationPresenter.MainContent parent) {
         super(view, parent);
     }
-
 
     public static class MyView extends CompositeView  implements View{
 
@@ -38,7 +37,8 @@ public class HomePresenter extends PresenterChild<HomePresenter.MyView> {
         @Inject MyView() {
 
             container = new FlowPanel();
-            container.getElement().setAttribute("style", "display: flex; justify-content: center; margin: 10px;");
+            container.getElement().setAttribute("style", "margin: 50px;");
+            container.add(new AlertDialog("Esta web constante construccion, fecha de la actualizacion 24/05/2020, https://github.com/Sparanzza/personal-site"));
             container.add( new HTML(I18N.mainTextHome()));
 
             initWidget(container);
