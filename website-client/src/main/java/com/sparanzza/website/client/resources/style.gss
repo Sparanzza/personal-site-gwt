@@ -1,38 +1,112 @@
 @external "gwt-*";
 
-html { font-size: 62.5%; }
-body { font-size: 1.3rem; }
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+   font-family: 'Montserrat', sans-serif;
+   font-size: 15px;
+   font-weight: 400;
+   line-height: 29px;
+   letter-spacing: -.02em;
+   color : #5b708b
+}
+
+h1{ font-size: 48px; font-weight: 700; line-height: 48px;}
+h4{ font-size: 18px; font-weight: 300; }
+p{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
+.mv20-section{
+    margin: 20px 0px;
+}
 
 /*TOP NAVBAR*/
 /* Add a black background color to the top navigation */
-.topnav { background-color: #333; overflow: hidden; }
+.topnav { overflow: hidden; }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 14px;
-  cursor: pointer;
+    position: relative;
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
+
 /* Change the color of links on hover */
-.topnav a:hover { background-color: #ddd; color: black; }
+.topnav a:hover {
+    text-decoration: none;
+    position: relative;
+}
 
-/* Add a color to the active/current link */
-.topnav a.active { background-color: #4CAF50; color: white; }
+.topnav a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 10px;
+    left: 0;
+    background-color: #ff23b9;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all .5s cubic-bezier(1,.25,0,.75) 0s;
+    transition: all .5s cubic-bezier(1,.25,0,.75) 0s;
+}
 
-/*TOP NAVBAR*/
-.alertdialog { margin-bottom: 10px; padding: 10px; background-color: #f44336; color: white; cursor: pointer; }
+.topnav a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(.8);
+}
 
-.alertdialog .alertdialog-closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+.topnav a.active { color: #ff23b9; }
+
+/*ALERT DIALOG*/
+.alertdialog {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f44336;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: .3px;
+    transition: 0.3s;
+    color: white;
+ }
+.alertdialog a {
+    color: white;
+    font-weight: 700;
+    margin: 5px 0px;
+}
+ .alertdialog .alertdialog-closebtn{
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+ }
+
+
+
+/*MAGICAL UNDERLINE FOR PARAGRAPH*/
+.underline-magical {
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    transition: background-size 0.25s ease-in;
+}
+underline-magical:hover {
+    background-size: 100% 88%;
 }

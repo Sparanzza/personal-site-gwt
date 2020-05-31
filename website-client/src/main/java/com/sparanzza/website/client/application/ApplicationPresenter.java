@@ -12,6 +12,7 @@ import com.intendia.reactivity.client.RevealableComponent;
 import com.intendia.reactivity.client.RootPresenter.RootContentSlot;
 import com.intendia.reactivity.client.Slots.NestedSlot;
 import com.intendia.reactivity.client.View;
+import com.sparanzza.website.client.ui.Footer;
 import com.sparanzza.website.client.ui.TopMenu;
 import dagger.Lazy;
 import io.reactivex.Observable;
@@ -41,6 +42,7 @@ public class ApplicationPresenter extends PresenterChild<ApplicationPresenter.My
         FlowPanel loadingMessage;
         SimplePanel mainContentPanel;
         TopMenu topMenu;
+        Footer footer;
 
         @Inject
         MyView(MainContent slot) {
@@ -48,6 +50,7 @@ public class ApplicationPresenter extends PresenterChild<ApplicationPresenter.My
             loadingMessage = new FlowPanel(); rootContent.add(loadingMessage);
             topMenu = new TopMenu(); rootContent.add(topMenu);
             mainContentPanel = new SimplePanel(); rootContent.add(mainContentPanel);
+            rootContent.add(new Footer());
             initWidget(rootContent);
             bindSlot(slot, (HasOneWidget) mainContentPanel);
         }

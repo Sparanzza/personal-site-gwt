@@ -24,3 +24,4 @@ local/
 /atlassian-ide-plugin.xml
 /igestion-i18n.zip
 !.idea/runConfigurations/
+index.html

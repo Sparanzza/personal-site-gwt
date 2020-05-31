@@ -6,3 +6,8 @@ GWT 2.8.2
 RxGWT-java
 reactivity 0.1
 dagger
+
+#### Notes
+Need to edit some files to edit with your configuration.
+
+- index_example.html

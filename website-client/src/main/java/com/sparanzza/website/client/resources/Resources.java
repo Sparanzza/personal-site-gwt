@@ -25,6 +25,8 @@ public interface Resources extends ClientBundle {
         String topnav();
         @ClassName("alertdialog") String alertDialog();
         @ClassName("alertdialog-closebtn") String alertDialogCloseBtn();
+        @ClassName("mv20-section") String mv20Section();
+        @ClassName("underline-magical") String underlineMagical();
     }
 
     @Source("normalize.gss") @NotStrict Normalize normalize();

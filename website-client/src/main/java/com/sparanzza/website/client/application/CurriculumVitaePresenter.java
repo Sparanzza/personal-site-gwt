@@ -2,17 +2,22 @@
 package com.sparanzza.website.client.application;
 
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTML;
 import com.intendia.reactivity.client.CompositeView;
 import com.intendia.reactivity.client.Place;
 import com.intendia.reactivity.client.PresenterChild;
 import com.intendia.reactivity.client.View;
 import com.sparanzza.website.client.ApplicationEntryPoint;
 import com.sparanzza.website.client.NameTokens;
+import com.sparanzza.website.client.ui.AlertDialog;
+import elemental2.dom.HTMLElement;
 import io.reactivex.Single;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import static com.sparanzza.website.client.i18n.WebsiteConstants.I18N;
+import static org.jboss.gwt.elemento.core.Elements.a;
+import static org.jboss.gwt.elemento.core.Elements.span;
 
 public class CurriculumVitaePresenter extends PresenterChild<CurriculumVitaePresenter.MyView> {
 
@@ -31,8 +36,11 @@ public class CurriculumVitaePresenter extends PresenterChild<CurriculumVitaePres
         @Inject
         MyView() {
             container = new FlowPanel();
-            container.getElement().setAttribute("style", "display: flex; justify-content: center; margin: 50px;");
-            container.add(new HTML("CV PRESENTER"));
+            container.getElement().setAttribute("style", "margin: 0px 35px;");
+
+            HTMLElement alertConstruction = span().add(I18N.underConstruction())
+                    .add(span().add(a("https://www.linkedin.com/in/sparanzza/").add(" por favor visite perfil linkedIn."))).element();
+            container.add(new AlertDialog(alertConstruction));
 
             initWidget(container);
         }
