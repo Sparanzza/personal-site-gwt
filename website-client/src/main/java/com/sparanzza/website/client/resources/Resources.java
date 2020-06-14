@@ -25,8 +25,16 @@ public interface Resources extends ClientBundle {
         String topnav();
         @ClassName("alertdialog") String alertDialog();
         @ClassName("alertdialog-closebtn") String alertDialogCloseBtn();
-        @ClassName("mv20-section") String mv20Section();
         @ClassName("underline-magical") String underlineMagical();
+        @ClassName("footer-sign") String footerSign();
+        @ClassName("footer-social-link") String footerSocialLink();
+        @ClassName("footer-link") String footerLink();
+        @ClassName("made-with") String madeWith();
+        @ClassName("cyan-shadow-section") String cyanShadowSection();
+
+        String mv20();
+        String mv50();
+        String mv100();
     }
 
     @Source("normalize.gss") @NotStrict Normalize normalize();

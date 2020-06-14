@@ -19,10 +19,10 @@ import static com.sparanzza.website.client.i18n.WebsiteConstants.I18N;
 import static org.jboss.gwt.elemento.core.Elements.a;
 import static org.jboss.gwt.elemento.core.Elements.span;
 
+@Singleton
 public class CurriculumVitaePresenter extends PresenterChild<CurriculumVitaePresenter.MyView> {
 
-    public static @Singleton
-    class MyPlace extends Place {
+    public static @Singleton class MyPlace extends Place {
         @Inject
         MyPlace(Single<ApplicationEntryPoint.ClientModule.Presenters> p) {
             super(NameTokens.CURRICULUMVITAEPAGE.getPath(), p.map(ApplicationEntryPoint.ClientModule.Presenters::curriculumVitae));

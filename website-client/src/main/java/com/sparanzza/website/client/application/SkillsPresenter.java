@@ -18,6 +18,7 @@ import static com.sparanzza.website.client.i18n.WebsiteConstants.I18N;
 import static org.jboss.gwt.elemento.core.Elements.a;
 import static org.jboss.gwt.elemento.core.Elements.span;
 
+@Singleton
 public class SkillsPresenter extends PresenterChild<SkillsPresenter.MyView> {
 
     public static @Singleton class MyPlace extends Place {

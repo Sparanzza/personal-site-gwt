@@ -12,20 +12,18 @@ body{
    font-weight: 400;
    line-height: 29px;
    letter-spacing: -.02em;
-   color : #5b708b
+   color : #5b708b;
+   background: floralwhite;
 }
 
 h1{ font-size: 48px; font-weight: 700; line-height: 48px;}
 h4{ font-size: 18px; font-weight: 300; }
-p{
-    text-align: justify;
-    text-justify: inter-word;
-}
+p{ text-align: justify; text-justify: inter-word; }
 
 
-.mv20-section{
-    margin: 20px 0px;
-}
+.mv20{ margin: 20px 0px; }
+.mv50{ margin: 50px 0px; }
+.mv100{ margin: 100px 0px; }
 
 /*TOP NAVBAR*/
 /* Add a black background color to the top navigation */
@@ -110,3 +108,58 @@ p{
 underline-magical:hover {
     background-size: 100% 88%;
 }
+
+/*FOOTER*/
+
+.cyan-shadow-section{
+    padding: 30px;
+    width: 100%;
+    background-color: #00ffdc;
+    margin-top: 50px;
+    -webkit-box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.75);
+    -moz-box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.75);
+    box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.75);
+}
+
+.footer-sign {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+footer > * > * { color : #5b708b; }
+
+.footer-social-link { display: flex; justify-content: center; margin: 40px 0px;}
+.footer-social-link > a > i {
+    border-radius: 100%;
+    border: 2px solid rgba(0,0,0,0.3);
+    margin: 14px;
+    color: #5b708b;
+    font-size: 18px;
+    transition: .3s all;
+    box-sizing: content-box;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 49px;
+}
+
+.footer-social-link > a > i:hover{
+    background: lightcyan;
+    transition: .3s all;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+footer .made-with{
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.footer-link > a {
+    color: #5b708b;
+    display: block;
+}
+

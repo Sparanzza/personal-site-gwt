@@ -15,8 +15,7 @@ import javax.inject.Singleton;
 
 public class SayHelloPresenter extends PresenterChild<SayHelloPresenter.MyView> {
 
-    public static @Singleton
-    class MyPlace extends Place {
+    public static @Singleton class MyPlace extends Place {
         private BehaviorSubject<String> navigationHistory = BehaviorSubject.createDefault("");
 
         @Inject

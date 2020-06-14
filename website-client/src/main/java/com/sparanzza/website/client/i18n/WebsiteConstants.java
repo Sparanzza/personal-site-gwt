@@ -25,5 +25,14 @@ public interface WebsiteConstants extends Constants {
             "Durante este periodo, además de mi trabajo, no dude en empezar a estudiar mi Ciclo Formativo de Grado Superior de Desarrollo de aplicaciones Informáticas.\n" +
             "Esto no es un fin, te invito a visitar mi perfil para ver el resto de mis aptitudes.") String mainTextLastSteps();
 
+    @Key("handcrafted") @DefaultStringValue("Hecho a mano por mi") String handcrafted();
+    @Key("nothingVentured") @DefaultStringValue("¡El que no arriesga, no gana!") String nothingVentured();
+    @Key("madeWith") @DefaultStringValue("Hecho con") String madeWith();
+
+    @Key("frontEnd") @DefaultStringValue("Front-End") String frontEnd();
+    @Key("backEnd") @DefaultStringValue("Back-End") String backEnd();
+    @Key("broadcast") @DefaultStringValue("Broadcast") String broadcast();
+    @Key("designArt") @DefaultStringValue("diseño y arte") String designArt();
+    @Key("integration") @DefaultStringValue("Integracion") String integration();
 
 }

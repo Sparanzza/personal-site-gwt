@@ -44,17 +44,18 @@ public class HomePresenter extends PresenterChild<HomePresenter.MyView> {
         @Inject
         MyView() {
             container = new FlowPanel();
-            container.getElement().setAttribute("style", "margin: 0px 35px;");
+            //container.getElement().setAttribute("style", "margin: 0px 35px;");
 
             HTMLElement alertConstruction = span().add(I18N.underConstruction())
                     .add(span().add(a("https://github.com/Sparanzza/personal-site").add(" Github project"))).element();
             container.add(new AlertDialog(alertConstruction));
-
-            HTMLDivElement contentPresenter = div().css(res().style().mv20Section())
-                    .add(div().style("text-align: center; margin: 100px 0px;")
+            HTMLDivElement contentPresenter = div().style("text-align: center;")
+                    .add(div().css(res().style().mv100())
                             .add(h(1).add(I18N.topTitleHome()))
                             .add(h(4).add(I18N.topSubtitleHome())))
-                    .add(p().add(I18N.mainTextHome()).get()).get();
+                    .add(div().css(res().style().cyanShadowSection() + " " + res().style().mv100())
+                            .add(p().add(I18N.mainTextHome()))).element();
+
             container.add(Widgets.widget(contentPresenter));
             initWidget(container);
         }

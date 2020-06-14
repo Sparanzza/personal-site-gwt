@@ -19,10 +19,10 @@ import javax.inject.Singleton;
 import static com.sparanzza.website.client.i18n.WebsiteConstants.I18N;
 import static org.jboss.gwt.elemento.core.Elements.*;
 
+@Singleton
 public class LastStepsPresenter extends PresenterChild<LastStepsPresenter.MyView> {
 
-    public static @Singleton
-    class MyPlace extends Place {
+    public static @Singleton class MyPlace extends Place {
         @Inject
         MyPlace(Single<ApplicationEntryPoint.ClientModule.Presenters> p) {
             super(NameTokens.LASTSTEPSPAGE.getPath(), p.map(ApplicationEntryPoint.ClientModule.Presenters::lastSteps));

@@ -12,10 +12,10 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
+@Singleton
 public class ErrorPresenter extends PresenterChild<ErrorPresenter.MyView> {
 
-    public static @Singleton
-    class MyPlace extends Place {
+    public static @Singleton class MyPlace extends Place {
         @Inject
         MyPlace(Provider<ErrorPresenter> p) {
             super(NameTokens.ERRORPAGE.getPath(), asSingle(p));

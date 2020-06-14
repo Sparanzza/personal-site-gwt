@@ -35,8 +35,7 @@ public class ApplicationPresenter extends PresenterChild<ApplicationPresenter.My
      * This is the top-level view of the application. Every time another presenter wants to reveal itself, {@link
      * MyView} will add its content of the target inside the {@code mainContentPanel}.
      */
-    public static @Singleton
-    class MyView extends CompositeView implements View {
+    public static @Singleton class MyView extends CompositeView implements View {
 
         FlowPanel rootContent;
         FlowPanel loadingMessage;
