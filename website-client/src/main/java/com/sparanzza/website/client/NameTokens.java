@@ -3,7 +3,7 @@ package com.sparanzza.website.client;
 public enum NameTokens {
     HOMEPAGE("home", "Inicio"),
     LASTSTEPSPAGE("last-steps", "Ultimos pasos"),
-    CURRICULUMVITAEPAGE("curriculum-vitae", "Curriculum vitae"),
+    CURRICULUMVITAEPAGE("curriculum-vitae", "Curriculum"),
     SKILLSPAGES("skills", "Perfiles"),
     SAYHOELLOPAGE("say-hello", "Saluda"),
     ERRORPAGE("", "error");

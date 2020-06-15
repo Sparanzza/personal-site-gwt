@@ -1,10 +1,7 @@
 @external "gwt-*";
 
 
-* {
-    margin: 0px;
-    padding: 0px;
-}
+* { margin: 0px; padding: 0px; }
 
 body{
    font-family: 'Montserrat', sans-serif;
@@ -17,7 +14,10 @@ body{
 }
 
 h1{ font-size: 48px; font-weight: 700; line-height: 48px;}
-h4{ font-size: 18px; font-weight: 300; }
+h2{ font-size: 28px; font-weight: 700; line-height: 28px;}
+h3{ font-size: 22px; font-weight: 600; line-height: 22px;}
+h3{ font-size: 15px; font-weight: 500; line-height: 15px;}
+h5{ font-size: 18px; font-weight: 300; }
 p{ text-align: justify; text-justify: inter-word; }
 
 
@@ -83,6 +83,7 @@ p{ text-align: justify; text-justify: inter-word; }
     transition: 0.3s;
     color: white;
  }
+
 .alertdialog a {
     color: white;
     font-weight: 700;
@@ -94,8 +95,6 @@ p{ text-align: justify; text-justify: inter-word; }
     font-size: 16px;
     line-height: 16px;
  }
-
-
 
 /*MAGICAL UNDERLINE FOR PARAGRAPH*/
 .underline-magical {
@@ -109,18 +108,18 @@ underline-magical:hover {
     background-size: 100% 88%;
 }
 
-/*FOOTER*/
 
 .cyan-shadow-section{
     padding: 30px;
     width: 100%;
     background-color: #00ffdc;
     margin-top: 50px;
-    -webkit-box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.75);
-    -moz-box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.75);
-    box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.75);
+    -webkit-box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.50);
+    -moz-box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.50);
+    box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.50);
 }
-
+/*FOOTER*/
+footer{ clear: both;}
 .footer-sign {
     text-align: center;
     font-size: 20px;
@@ -151,7 +150,6 @@ footer > * > * { color : #5b708b; }
     cursor: pointer;
 }
 
-
 footer .made-with{
     text-align: center;
     font-size: 13px;
@@ -163,3 +161,34 @@ footer .made-with{
     display: block;
 }
 
+/* SKILLS HOME */
+.container-skills-home{
+    top: -150px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px 4px;
+}
+
+.container-skills-home > div{
+    position: relative;
+    flex: 1 1 265px;
+    background-color: floralwhite;
+    margin: 4px;
+    border-radius: 10px;
+    border: 1px solid lavender;
+    -webkit-box-shadow: 0 10px 38px 6px rgba(148,230,255,0.50);
+    -moz-box-shadow: 0 10px 38px 6px rgba(148,230,255,0.50);
+    box-shadow: 0 10px 9px -6px rgba(54,101,115,0.22);
+    padding: 50px 0px;
+}
+
+.container-skills-home > div > img {
+    width: 60px;
+    margin: 20px;
+}
+
+.container-skills-home > div > div > p { padding: 12px; line-height: 24px; }
+.container-skills-home > div > div > p > strong{ font-weight: 700; color: #9300fff5; }
+.container-skills-home > div > ul { list-style: none; }

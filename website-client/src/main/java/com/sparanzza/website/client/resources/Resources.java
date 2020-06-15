@@ -31,7 +31,7 @@ public interface Resources extends ClientBundle {
         @ClassName("footer-link") String footerLink();
         @ClassName("made-with") String madeWith();
         @ClassName("cyan-shadow-section") String cyanShadowSection();
-
+        @ClassName("container-skills-home") String containerSkillsHome();
         String mv20();
         String mv50();
         String mv100();
