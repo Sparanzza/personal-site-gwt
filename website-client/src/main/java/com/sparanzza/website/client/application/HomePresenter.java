@@ -45,7 +45,6 @@ public class HomePresenter extends PresenterChild<HomePresenter.MyView> {
         @Inject
         MyView() {
             container = new FlowPanel();
-            //container.getElement().setAttribute("style", "margin: 0px 35px;");
 
             HTMLElement alertConstruction = span().add(I18N.underConstruction())
                     .add(span().add(a("https://github.com/Sparanzza/personal-site").add(" Github project"))).element();

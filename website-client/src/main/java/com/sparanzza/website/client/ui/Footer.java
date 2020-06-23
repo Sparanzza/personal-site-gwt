@@ -19,6 +19,7 @@ public class Footer extends Composite {
                                 .add(a("https://www.twitter.com/sparanzza", "_blank").add(i().css("fa fa-twitter")))
                                 .add(a("https://www.linkedin.com/in/sparanzza", "_blank").add(i().css("fab fa-linkedin-in")))
                                 .add(a("https://www.github.com/sparanzza", "_blank").add(i().css("fa fa-github")))
+                                .add(a("https://www.vimeo.com/sparanzza", "_blank").add(i().css("fab fa-vimeo-v")))
                                 .add(a("mailto:aurelio@sparanzza.com", "_blank").add(i().css("far fa-envelope"))))
                         .add(div().css(res().style().madeWith())
                                 .add(span().add(I18N.handcrafted()).css())
