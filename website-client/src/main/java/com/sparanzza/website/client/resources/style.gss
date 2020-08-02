@@ -118,6 +118,28 @@ underline-magical:hover {
     -moz-box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.50);
     box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.50);
 }
+
+.purple-shadow-section{
+    padding: 30px;
+    width: 100%;
+    background-color: #e5c3ff;
+    margin-top: 50px;
+    -webkit-box-shadow: 0px 10px 38px 6px rgba(214,148,255,0.35);
+    -moz-box-shadow: 0px 10px 38px 6px rgba(214,148,255,0.35);
+    box-shadow: 0px 10px 38px 6px rgba(214,148,255,0.35);
+}
+
+.grey-shadow-section{
+    padding: 30px;
+    width: 100%;
+    background-color: #c1d7e0;
+    margin-top: 50px;
+    -webkit-box-shadow: 0px 10px 38px 6px rgba(0,0,0,0.10);
+    -moz-box-shadow: 0px 10px 38px 6px rgba(0,0,0,0.10);
+    box-shadow: 0px 10px 38px 6px rgba(0,0,0,0.10);
+}
+
+
 /*FOOTER*/
 footer{ clear: both;}
 .footer-sign {
@@ -190,5 +212,5 @@ footer .made-with{
 }
 
 .container-skills-home > div > div > p { padding: 12px; line-height: 24px; }
-.container-skills-home > div > div > p > strong{ font-weight: 700; color: #9300fff5; }
+p > strong{ font-weight: 700; color: #9300fff5; }
 .container-skills-home > div > ul { list-style: none; }

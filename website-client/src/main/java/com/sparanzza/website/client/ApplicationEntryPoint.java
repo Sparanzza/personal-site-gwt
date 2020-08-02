@@ -57,7 +57,6 @@ public class ApplicationEntryPoint implements EntryPoint {
             };
         }
 
-
         //
         @Binds @IntoSet Place bindEmptyPlace(ErrorPresenter.MyPlace o); // included in initial bundle
         @Binds @IntoSet Place bindHomePlace(HomePresenter.MyPlace o); // loaded using code splitting when any of this presenters gets visited
