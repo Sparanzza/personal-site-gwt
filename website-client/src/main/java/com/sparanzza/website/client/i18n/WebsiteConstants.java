@@ -9,7 +9,7 @@ public interface WebsiteConstants extends Constants {
 
     WebsiteConstants I18N = GWT.create(WebsiteConstants.class);
 
-    @Key("underConstruction") @DefaultStringValue("sparanzza.com esta todavia en construccion, actualizado 03/08/2020, ") String underConstruction();
+    @Key("underConstruction") @DefaultStringValue("sparanzza.com esta todavia en construccion, actualizado 09/10/2020, ") String underConstruction();
     @Key("topTitleHome") @DefaultStringValue("Full Stack Java Dev & diseñador broadcast") String topTitleHome();
     @Key("topSubtitleHome") @DefaultStringValue("Me encata programar, y sobre todo diseñar cosas bonitas, amo lo que hago ;)") String topSubtitleHome();
     @Key("mainTextHome") @DefaultStringValue("Actualmente trabajo como Full Stack Java Developer pero con una trayectoria trayectoria en habilidades de diseño y desarrollo graficos en sistemas broadcast. Sparanzza no es solo un perfil más dentro de internet, es la historia de muchas etapas laborales, de múltiples vivencias adquiridas e innumerables adversidades superadas, pero lo más importante, es la suma del aprendizaje grandiosos compañeros, trabajo en equipo, apoyo y esfuerzo mutuo, de los cuales han hecho crecer no solo en lo profesional si no en lo personal, Sparanzza es en definitiva el cúmulo de experiencia adquirida a través del trabajo con la fuerza de la amistad. Por eso este sitio web es un homenaje a todas esas personas, que con su cariño, afecto y esfuerzo, han hecho maravillosa esta aventura.") String mainTextHome();

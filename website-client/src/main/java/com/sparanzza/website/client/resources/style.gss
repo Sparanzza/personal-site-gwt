@@ -6,10 +6,10 @@
 body{
    font-family: 'Montserrat', sans-serif;
    font-size: 15px;
-   font-weight: 400;
+   font-weight: 500;
    line-height: 29px;
    letter-spacing: -.02em;
-   color : #5b708b;
+   color : #173761;
    background: floralwhite;
 }
 
@@ -112,7 +112,7 @@ underline-magical:hover {
 .cyan-shadow-section{
     padding: 30px;
     width: 100%;
-    background-color: #00ffdc;
+    background-color: #4dfbff;
     margin-top: 50px;
     -webkit-box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.50);
     -moz-box-shadow: 0px 10px 38px 6px rgba(148,230,255,0.50);
@@ -122,7 +122,7 @@ underline-magical:hover {
 .purple-shadow-section{
     padding: 30px;
     width: 100%;
-    background-color: #e5c3ff;
+    background-color: #000;
     margin-top: 50px;
     -webkit-box-shadow: 0px 10px 38px 6px rgba(214,148,255,0.35);
     -moz-box-shadow: 0px 10px 38px 6px rgba(214,148,255,0.35);
@@ -148,14 +148,14 @@ footer{ clear: both;}
     font-weight: 300;
 }
 
-footer > * > * { color : #5b708b; }
+footer > * > * { color : #173761; }
 
 .footer-social-link { display: flex; justify-content: center; margin: 40px 0px;}
 .footer-social-link > a > i {
     border-radius: 100%;
     border: 2px solid rgba(0,0,0,0.3);
     margin: 14px;
-    color: #5b708b;
+    color: #173761;
     font-size: 18px;
     transition: .3s all;
     box-sizing: content-box;
@@ -179,7 +179,7 @@ footer .made-with{
 }
 
 .footer-link > a {
-    color: #5b708b;
+    color: #173761;
     display: block;
 }
 
@@ -212,5 +212,5 @@ footer .made-with{
 }
 
 .container-skills-home > div > div > p { padding: 12px; line-height: 24px; }
-p > strong{ font-weight: 700; color: #9300fff5; }
+p > strong{ font-weight: 700; color: #ff008c; }
 .container-skills-home > div > ul { list-style: none; }
