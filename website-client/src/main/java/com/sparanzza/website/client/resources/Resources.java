@@ -34,6 +34,8 @@ public interface Resources extends ClientBundle {
         @ClassName("purple-shadow-section") String purpleShadowSection();
         @ClassName("container-skills-home") String containerSkillsHome();
         String mv100();
+        String mv50();
+        String mv20();
     }
 
     @Source("normalize.gss") @NotStrict Normalize normalize();

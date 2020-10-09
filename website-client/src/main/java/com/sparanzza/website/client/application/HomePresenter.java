@@ -51,6 +51,7 @@ public class HomePresenter extends PresenterChild<HomePresenter.MyView> {
             container.add(new AlertDialog(alertConstruction));
             HTMLDivElement contentPresenter = div().style("text-align: center;")
                     .add(div().css(res().style().mv100())
+                            .add(img("/img/home_sparanzza.svg").style("width: 50%; mix-blend-mode: multiply;"))
                             .add(h(1).style("margin: 20px;").add(I18N.topTitleHome()))
                             .add(h(5).add(I18N.topSubtitleHome())))
                     .add(div().css(res().style().cyanShadowSection() + " " + res().style().mv100())
