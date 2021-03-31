@@ -28,7 +28,7 @@
         <reactivity.version>0.2</reactivity.version>
         <elemental2.version>1.0.0-RC1</elemental2.version>
         <elemento.version>0.9.6-gwt2</elemento.version>
-        <guava.version>27.1-jre</guava.version>
+        <guava.version>30.1.1-jre</guava.version>
     </properties>
 
     <developers>
